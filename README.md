@@ -11,6 +11,8 @@ Template forked from [codemirror/lang-example](https://github.com/codemirror/lan
 - [Coordinate Reference System](https://www.ogc.org/publications/standard/wkt-crs/)
 - [SQL Access](https://www.ogc.org/publications/standard/sfs/)
 
+## Notes
+
 ![A UML class diagram for WKT Geometries](./wkt_class_uml.png)
 
 https://www.loc.gov/preservation/digital/formats/fdd/fdd000548.shtml
@@ -18,6 +20,8 @@ https://www.loc.gov/preservation/digital/formats/fdd/fdd000548.shtml
 Test case expressions taken from;
  - https://mapscaping.com/a-guide-to-wkt-in-gis/
 
+This is an example of how the grammar is tested, pretty nice!
+ - https://lezer.codemirror.net/examples/test/
 
 
 ## TODO

@@ -8,9 +8,11 @@ Geometry {
 
 Point { "POINT" "(" Number Number ")" }
 
-LineString { "LINESTRING" "(" Coord2dList ")" }
+LineString { "LINESTRING" List<Coord2d> }
 
 Coord2dList { Coord2d (',' Coord2d)* }
+
+List<item> { "(" item ("," item)* ")"}
 
 Coord2d { X Y }
 
