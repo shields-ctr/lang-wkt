@@ -1,4 +1,24 @@
-# CodeMirror 6 language package template
+# lang-wkt
+
+A `CodeMirror` Language support extension for WKT(Well Known Text) files.
+
+Template forked from [codemirror/lang-example](https://github.com/codemirror/lang-example).
+
+## Specifications
+
+- [Well Known Text](https://www.ogc.org/publications/standard/sfa/)
+- [Coordinate Reference System](https://www.ogc.org/publications/standard/wkt-crs/)
+- [SQL Access](https://www.ogc.org/publications/standard/sfs/)
+
+![A UML class diagram for WKT Geometries](./wkt_class_uml.png)
+
+https://www.loc.gov/preservation/digital/formats/fdd/fdd000548.shtml
+
+## TODO
+
+- how would I go about validating something like polygon winding order?
+
+## CodeMirror 6 language package template
 
 This is an example repository containing a minimal [CodeMirror](https://codemirror.net/6/) language support package. The idea is to clone it, rename it, and edit it to create support for a new language.
 

@@ -1,22 +1,21 @@
-@top Program { expression* }
+@top WKT { Geometry* }
 
-@skip { space | LineComment }
+@skip { space | Comment }
 
-expression {
-  Identifier |
-  String |
-  Boolean |
-  Application { "(" expression* ")" }
+Geometry {
+  Name |
+  Number |
+  String
 }
 
 @tokens {
-  Identifier { $[a-zA-Z_\-0-9]+ }
+  Number { $[0-9]+ }
+
+  Name { $[a-zA-Z]+ }
 
   String { '"' (!["\\] | "\\" _)* '"' }
 
-  Boolean { "#t" | "#f" }
-
-  LineComment { ";" ![\n]* }
+  Comment { "//" ![\n]* }
 
   space { $[ \t\n\r]+ }
 

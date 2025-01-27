@@ -1,41 +1,9 @@
-# Booleans
+# comment
 
-#t
-#f
+ANAME
 
-==>
-
-Program(Boolean, Boolean)
-
-# Identifiers
-
-one
-Two_Three
+// and then a comment...
 
 ==>
 
-Program(Identifier, Identifier)
-
-# Strings
-
-"hello"
-"one\"\\two"
-
-==>
-
-Program(String, String)
-
-# Applications
-
-(begin
-  (when #t
-    (print (concat "hello" " " "world")))
-  (print "DONE"))
-
-==>
-
-Program(Application(
-  Identifier,
-  Application(Identifier, Boolean, Application(
-    Identifier, Application(Identifier, String, String, String)))
-  Application(Identifier, String)))
+WKT(Geometry(Name), Comment)
