@@ -7,12 +7,18 @@ Template forked from [codemirror/lang-example](https://github.com/codemirror/lan
 ## Specifications
 
 - [Well Known Text](https://www.ogc.org/publications/standard/sfa/)
+  - that production rules are given in section 7.2.2 - 7.2.5
 - [Coordinate Reference System](https://www.ogc.org/publications/standard/wkt-crs/)
 - [SQL Access](https://www.ogc.org/publications/standard/sfs/)
 
 ![A UML class diagram for WKT Geometries](./wkt_class_uml.png)
 
 https://www.loc.gov/preservation/digital/formats/fdd/fdd000548.shtml
+
+Test case expressions taken from;
+ - https://mapscaping.com/a-guide-to-wkt-in-gis/
+
+
 
 ## TODO
 

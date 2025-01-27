@@ -1,9 +1,36 @@
-# comment
+# Point
 
-ANAME
+POINT( 10 10 )
 
 // and then a comment...
 
 ==>
 
-WKT(Geometry(Name), Comment)
+WKT(
+  Geometry(
+    Point("(",Number,Number,")")
+  ), 
+  Comment
+)
+
+# LineString
+
+LINESTRING(30 10, 10 30, 40 40)
+
+==>
+
+WKT(
+  Geometry(
+    LineString(
+      "(", 
+      Coord2dList(
+        Coord2d( X(Number), Y(Number) ),
+        ",",
+        Coord2d( X(Number), Y(Number) ),
+        ",",
+        Coord2d( X(Number), Y(Number) )
+      ),
+      ")"
+    )
+  )
+)

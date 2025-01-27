@@ -3,23 +3,31 @@
 @skip { space | Comment }
 
 Geometry {
-  Name |
-  Number |
-  String
+  Point | LineString
 }
 
-@tokens {
+Point { "POINT" "(" Number Number ")" }
+
+LineString { "LINESTRING" "(" Coord2dList ")" }
+
+Coord2dList { Coord2d (',' Coord2d)* }
+
+Coord2d { X Y }
+
+X { Number }
+
+Y { Number }
+
+Z { Number }
+
+M { NUmber }
+
+@tokens {  
+  Name {$[a-zA-Z]}
   Number { $[0-9]+ }
-
-  Name { $[a-zA-Z]+ }
-
-  String { '"' (!["\\] | "\\" _)* '"' }
-
   Comment { "//" ![\n]* }
-
   space { $[ \t\n\r]+ }
-
-  "(" ")"
+  "," "(" ")"
 }
 
 @detectDelim
