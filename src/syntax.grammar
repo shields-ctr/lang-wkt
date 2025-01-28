@@ -3,12 +3,14 @@
 @skip { space | Comment }
 
 Geometry {
-  Point | LineString | Polygon | MultiPoint
+  Point | LineString | Polygon | MultiPoint | Point2<"Z",3D>
 }
 
 Empty { "EMPTY" }
 
 Point { "POINT" "(" 2D ")" }
+
+Point2<sys, type> { "POINT" sys "(" type ")" }
 
 LineString { "LINESTRING" "(" List<2D> ")" }
 

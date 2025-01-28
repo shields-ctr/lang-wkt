@@ -3,6 +3,12 @@ POINT( 10 10 )
 // and then a comment...
 ==> WKT(Geometry(Point(2D(X(Number),Y(Number)))), Comment)
 
+#Point 3D
+POINT Z (1 2 3)
+==> WKT(
+  Geometry(
+    Point2( 3D( X(Number),Y(Number),Z(Number)))))
+
 # LineString
 LINESTRING(30 10, 10 30, 40 40)
 ==> WKT(
