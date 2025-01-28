@@ -3,18 +3,34 @@
 @skip { space | Comment }
 
 Geometry {
-  Point | LineString
+  Point | LineString | Polygon | MultiPoint
 }
 
-Point { "POINT" "(" Number Number ")" }
+Empty { "EMPTY" }
 
-LineString { "LINESTRING" List<Coord2d> }
+Point { "POINT" "(" 2D ")" }
 
-Coord2dList { Coord2d (',' Coord2d)* }
+LineString { "LINESTRING" "(" List<2D> ")" }
 
-List<item> { "(" item ("," item)* ")"}
+Polygon { "POLYGON" "(" "(" List<2D> ")" ")" }
 
-Coord2d { X Y }
+MultiPoint {
+  "MULTIPOINT" (
+    Empty | 
+    "(" "("2D")" (",""("2D")")* ")" |
+    "(" 2D (","2D)* ")"
+  )
+}
+
+List<item> { item ("," item)* }
+
+2D { X Y }
+
+2DM { X Y M }
+
+3D { X Y Z }
+
+3DM { X Y Z M }
 
 X { Number }
 
@@ -22,7 +38,7 @@ Y { Number }
 
 Z { Number }
 
-M { NUmber }
+M { Number }
 
 @tokens {  
   Name {$[a-zA-Z]}

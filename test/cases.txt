@@ -1,32 +1,47 @@
 # Point
-
 POINT( 10 10 )
-
 // and then a comment...
-
-==>
-
-WKT(
-  Geometry(
-    Point("(",Number,Number,")")
-  ), 
-  Comment
-)
+==> WKT(Geometry(Point(2D(X(Number),Y(Number)))), Comment)
 
 # LineString
-
 LINESTRING(30 10, 10 30, 40 40)
-
-==>
-
-WKT(
+==> WKT(
   Geometry(
     LineString(
       List(
-        Coord2d( X(Number), Y(Number) ),
-        Coord2d( X(Number), Y(Number) ),
-        Coord2d( X(Number), Y(Number) )
-      ),
+        2D( X(Number), Y(Number) ),
+        2D( X(Number), Y(Number) ),
+        2D( X(Number), Y(Number) )
+      )
+    )
+  )
+)
+
+# Polygon
+POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))
+==> WKT(
+  Geometry(
+    Polygon(
+      List(
+        2D( X(Number), Y(Number) ),
+        2D( X(Number), Y(Number) ),
+        2D( X(Number), Y(Number) ),
+        2D( X(Number), Y(Number) ),
+        2D( X(Number), Y(Number) )
+      )
+    )
+  )
+)
+
+# MultiPoint
+MULTIPOINT ((10 40), (40 30), (20 20), (30 10))
+==> WKT(
+  Geometry(
+    MultiPoint(
+      2D( X(Number), Y(Number) ),
+      2D( X(Number), Y(Number) ),
+      2D( X(Number), Y(Number) ),
+      2D( X(Number), Y(Number) )
     )
   )
 )
