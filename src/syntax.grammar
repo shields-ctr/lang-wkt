@@ -5,69 +5,59 @@
 @skip { space | Comment }
 
 Geometry {
-  "POINT" Point<2D> |
-  "LINESTRING" Line<2D> |  
-  "POLYGON" "" Polygon<2D> |
-  "MULTIPOINT" "(" List<Point<2D>> ")" |
-  "MULTILINESTRING" "(" List<Line<2D>> ")" |
-  "MULTIPOLYGON" "(" List<Polygon<2D>> ")" |
-  "GEOMETRYCOLLECTION" "(" List<Geometry> ")"
+  "POINT" (Empty | Point<2D>) |
+  "LINESTRING" (Empty | Line<2D>) |  
+  "POLYGON" (Empty | Polygon<2D>) |
+  "MULTIPOINT" (Empty | "(" List<Point<2D>> ")") |
+  "MULTILINESTRING" (Empty | "(" List<Line<2D>> ")") |
+  "MULTIPOLYGON" (Empty | "(" List<Polygon<2D>> ")") |
+  "GEOMETRYCOLLECTION" (Empty | "(" List<Geometry> ")")
 }
 
 GeometryM {
-  "POINT" "M" Point<2DM> |
-  "LINESTRING" "M" Line<2DM> |
-  "POLYGON" "M" Polygon<2DM> |
-  "MULTIPOINT" "M" "(" List<Point<2DM>> ")" | 
-  "MULTILINESTRING" "M" "(" List<Line<2DM>> ")" |
-  "MULTIPOLYGON" "M" "(" List<Polygon<2DM>> ")" |
-  "GEOMETRYCOLLECTION" "(" List<GeometryM> ")"
+  "POINT" "M" (Empty | Point<2DM>) |
+  "LINESTRING" "M" (Empty | Line<2DM>) |
+  "POLYGON" "M" (Empty | Polygon<2DM>) |
+  "MULTIPOINT" "M" (Empty | "(" List<Point<2DM>> ")") | 
+  "MULTILINESTRING" "M" (Empty | "(" List<Line<2DM>> ")") |
+  "MULTIPOLYGON" "M" (Empty | "(" List<Polygon<2DM>> ")") |
+  "GEOMETRYCOLLECTION" "M" (Empty | "(" List<GeometryM> ")")
 }
 
 GeometryZ {
-  "POINT" "Z" Point<3D> |
-  "LINESTRING" "Z" Line<3D> |
-  "POLYGON" "Z" Polygon<3D> |
-  "MULTIPOINT" "Z" "(" List<Point<3D>> ")" | 
-  "MULTILINESTRING" "Z" "(" List<Line<3D>> ")" |
-  "MULTIPOLYGON" "Z" "(" List<Polygon<3D>> ")" | 
-  "GEOMETRYCOLLECTION" "Z" "(" List<GeometryZ> ")"
+  "POINT" "Z" (Empty | Point<3D>) |
+  "LINESTRING" "Z" (Empty | Line<3D>) |
+  "POLYGON" "Z" (Empty | Polygon<3D>) |
+  "MULTIPOINT" "Z" (Empty | "(" List<Point<3D>> ")") | 
+  "MULTILINESTRING" "Z" (Empty | "(" List<Line<3D>> ")") |
+  "MULTIPOLYGON" "Z" (Empty | "(" List<Polygon<3D>> ")") | 
+  "GEOMETRYCOLLECTION" "Z" (Empty | "(" List<GeometryZ> ")")
 }
 
 GeometryZM {
-  "POINT" "ZM" Point<3DM> |
-  "LINESTRING" "ZM" Line<3DM> |
-  "POLYGON" "ZM" Polygon<3DM> |
-  "MULTIPOINT" "ZM" "(" List<Point<3DM>> ")" |
-  "MULTILINESTRING" "ZM" "(" List<Line<3DM>> ")" |
-  "MULTIPOLYGON" "ZM" "(" List<Polygon<3DM>> ")" | 
-  "GEOMETRYCOLLECTION" "ZM" "(" List<GeometryZM> ")"
+  "POINT" "ZM" (Empty | Point<3DM>) |
+  "LINESTRING" "ZM" (Empty | Line<3DM>) |
+  "POLYGON" "ZM" (Empty | Polygon<3DM>) |
+  "MULTIPOINT" "ZM" (Empty | "(" List<Point<3DM>> ")") |
+  "MULTILINESTRING" "ZM" (Empty | "(" List<Line<3DM>> ")") |
+  "MULTIPOLYGON" "ZM" (Empty | "(" List<Polygon<3DM>> ")") | 
+  "GEOMETRYCOLLECTION" "ZM" (Empty | "(" List<GeometryZM> ")")
 }
 
 Empty { "EMPTY" }
-
 Point<cs> { "(" cs ")" }
-
 Line<cs> { "(" List<cs> ")" }
-
 Polygon<cs> { "(" "(" List<cs> ")" ")" }
-
 List<item> { item ("," item)* }
 
 2D { X Y }
-
 2DM { X Y M }
-
 3D { X Y Z }
-
 3DM { X Y Z M }
 
 X { Number }
-
 Y { Number }
-
 Z { Number }
-
 M { Number }
 
 @tokens {  
