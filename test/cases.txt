@@ -1,22 +1,27 @@
 # Point
 // test the template grammar rules for Points
 POINT( 10 10 )
-POINT Z ( 10 11 12)
-POINT M ( 100 200 10)
+POINT Z(10 11 12)
+POINT M (100 200 10)
 POINT ZM ( 100 200 300 10)
 ==>WKT( Comment,
   Geometry(Point(2D(X(Number),Y(Number)))),
-  Geometry(Point(3D(X(Number),Y(Number), Z(Number)))),
-  Geometry(Point(2DM(X(Number),Y(Number), M(Number)))),
-  Geometry(Point(3DM(X(Number),Y(Number), Z(Number), M(Number))))
+  GeometryZ(Point(3D(X(Number),Y(Number), Z(Number)))),
+  GeometryM(Point(2DM(X(Number),Y(Number), M(Number)))),
+  GeometryZM(Point(3DM(X(Number),Y(Number), Z(Number), M(Number))))
 )
+
+# LineString
+LINESTRING ( 10 10, 20 20, 30 40)
+==>WKT(Geometry(Line(List(
+  2D( X(Number) Y(Number) ),
+  2D( X(Number) Y(Number) ),
+  2D( X(Number) Y(Number) )
+))))
 
 # Polygon
 POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))
-==> WKT(
-  Geometry(
-    Polygon(
-      List(
+==> WKT(Geometry(Polygon(List(
         2D( X(Number), Y(Number) ),
         2D( X(Number), Y(Number) ),
         2D( X(Number), Y(Number) ),
@@ -31,11 +36,57 @@ POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))
 MULTIPOINT ((10 40), (40 30), (20 20), (30 10))
 ==> WKT(
   Geometry(
-    MultiPoint(
+    List( 
+      Point( 2D( X(Number), Y(Number) ) ),
+      Point( 2D( X(Number), Y(Number) ) ),
+      Point( 2D( X(Number), Y(Number) ) ),
+      Point( 2D( X(Number), Y(Number) ) )
+    )
+  )
+)
+
+# MultiLineString
+MULTILINESTRING((10 10, 20 20, 10 40), (40 40, 30 30, 40 20, 30 10))
+==> WKT(Geometry(List(
+    Line(List(
+      2D( X(Number), Y(Number) ),
+      2D( X(Number), Y(Number) ),
+      2D( X(Number), Y(Number) )
+    )),
+    Line(List(
       2D( X(Number), Y(Number) ),
       2D( X(Number), Y(Number) ),
       2D( X(Number), Y(Number) ),
       2D( X(Number), Y(Number) )
+    ))
+)))
+
+# MultiPolygon
+MULTIPOLYGON  ( 
+((10 10, 10 20, 20 20, 20 15, 10 10)), 
+((60 60, 70 70, 80 60, 60 60 )) 
+)
+==>
+WKT(
+  Geometry(
+    List(
+      Polygon(
+        List(
+          2D(...),
+          2D(...),
+          2D(...),
+          2D(...),
+          2D(...)
+        )
+      ),
+      Polygon(
+        List(
+          2D(...),
+          2D(...),
+          2D(...),
+          2D(...)
+        )
+      )
     )
   )
 )

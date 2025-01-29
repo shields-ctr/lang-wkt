@@ -1,29 +1,56 @@
-@top WKT { Geometry* }
+@top WKT { 
+  (Geometry | GeometryM | GeometryZ | GeometryZM)*
+}
 
 @skip { space | Comment }
 
 Geometry {
-  Point<"",2D> | Point<"Z",3D> | Point<"M",2DM> | Point<"ZM",3DM> |
-  LineString<"",2D> | LineString<"Z",3D> | LineString<"M",2DM> | LineString<"ZM",3DM> |
-  Polygon | 
-  MultiPoint 
+  "POINT" Point<2D> |
+  "LINESTRING" Line<2D> |  
+  "POLYGON" "" Polygon<2D> |
+  "MULTIPOINT" "(" List<Point<2D>> ")" |
+  "MULTILINESTRING" "(" List<Line<2D>> ")" |
+  "MULTIPOLYGON" "(" List<Polygon<2D>> ")" |
+  "GEOMETRYCOLLECTION" "(" List<Geometry> ")"
+}
+
+GeometryM {
+  "POINT" "M" Point<2DM> |
+  "LINESTRING" "M" Line<2DM> |
+  "POLYGON" "M" Polygon<2DM> |
+  "MULTIPOINT" "M" "(" List<Point<2DM>> ")" | 
+  "MULTILINESTRING" "M" "(" List<Line<2DM>> ")" |
+  "MULTIPOLYGON" "M" "(" List<Polygon<2DM>> ")" |
+  "GEOMETRYCOLLECTION" "(" List<GeometryM> ")"
+}
+
+GeometryZ {
+  "POINT" "Z" Point<3D> |
+  "LINESTRING" "Z" Line<3D> |
+  "POLYGON" "Z" Polygon<3D> |
+  "MULTIPOINT" "Z" "(" List<Point<3D>> ")" | 
+  "MULTILINESTRING" "Z" "(" List<Line<3D>> ")" |
+  "MULTIPOLYGON" "Z" "(" List<Polygon<3D>> ")" | 
+  "GEOMETRYCOLLECTION" "Z" "(" List<GeometryZ> ")"
+}
+
+GeometryZM {
+  "POINT" "ZM" Point<3DM> |
+  "LINESTRING" "ZM" Line<3DM> |
+  "POLYGON" "ZM" Polygon<3DM> |
+  "MULTIPOINT" "ZM" "(" List<Point<3DM>> ")" |
+  "MULTILINESTRING" "ZM" "(" List<Line<3DM>> ")" |
+  "MULTIPOLYGON" "ZM" "(" List<Polygon<3DM>> ")" | 
+  "GEOMETRYCOLLECTION" "ZM" "(" List<GeometryZM> ")"
 }
 
 Empty { "EMPTY" }
 
-Point<sys, type> { "POINT" sys "(" type ")" }
+Point<cs> { "(" cs ")" }
 
-LineString<sys, type> { "LINESTRING" sys "(" List<type> ")" }
+Line<cs> { "(" List<cs> ")" }
 
-Polygon { "POLYGON" "(" "(" List<2D> ")" ")" }
-
-MultiPoint {
-  "MULTIPOINT" (
-    Empty | 
-    "(" "("2D")" (",""("2D")")* ")" |
-    "(" 2D (","2D)* ")"
-  )
-}
+Polygon<cs> { "(" "(" List<cs> ")" ")" }
 
 List<item> { item ("," item)* }
 
