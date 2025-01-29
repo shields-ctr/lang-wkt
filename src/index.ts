@@ -1,6 +1,6 @@
 import {parser} from "./syntax.grammar"
 import {LRLanguage, LanguageSupport, indentNodeProp, foldNodeProp, foldInside, delimitedIndent} from "@codemirror/language"
-import {styleTags, tags as t} from "@lezer/highlight"
+import {styleTags, tags} from "@lezer/highlight"
 
 export const WKTLanguage = LRLanguage.define({
   parser: parser.configure({
@@ -12,11 +12,11 @@ export const WKTLanguage = LRLanguage.define({
         Application: foldInside
       }),
       styleTags({
-        Identifier: t.variableName,
-        Boolean: t.bool,
-        String: t.string,
-        LineComment: t.lineComment,
-        "( )": t.paren
+        Name: tags.name,
+        Number: tags.integer,
+        Comment: tags.lineComment,
+        "( )": tags.paren,
+        ",": tags.separator
       })
     ]
   }),
