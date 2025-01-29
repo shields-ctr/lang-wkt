@@ -1,26 +1,14 @@
 # Point
+// test the template grammar rules for Points
 POINT( 10 10 )
-// and then a comment...
-==> WKT(Geometry(Point(2D(X(Number),Y(Number)))), Comment)
-
-#Point 3D
-POINT Z (1 2 3)
-==> WKT(
-  Geometry(
-    Point2( 3D( X(Number),Y(Number),Z(Number)))))
-
-# LineString
-LINESTRING(30 10, 10 30, 40 40)
-==> WKT(
-  Geometry(
-    LineString(
-      List(
-        2D( X(Number), Y(Number) ),
-        2D( X(Number), Y(Number) ),
-        2D( X(Number), Y(Number) )
-      )
-    )
-  )
+POINT Z ( 10 11 12)
+POINT M ( 100 200 10)
+POINT ZM ( 100 200 300 10)
+==>WKT( Comment,
+  Geometry(Point(2D(X(Number),Y(Number)))),
+  Geometry(Point(3D(X(Number),Y(Number), Z(Number)))),
+  Geometry(Point(2DM(X(Number),Y(Number), M(Number)))),
+  Geometry(Point(3DM(X(Number),Y(Number), Z(Number), M(Number))))
 )
 
 # Polygon

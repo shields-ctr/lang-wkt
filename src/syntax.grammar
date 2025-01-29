@@ -3,16 +3,17 @@
 @skip { space | Comment }
 
 Geometry {
-  Point | LineString | Polygon | MultiPoint | Point2<"Z",3D>
+  Point<"",2D> | Point<"Z",3D> | Point<"M",2DM> | Point<"ZM",3DM> |
+  LineString<"",2D> | LineString<"Z",3D> | LineString<"M",2DM> | LineString<"ZM",3DM> |
+  Polygon | 
+  MultiPoint 
 }
 
 Empty { "EMPTY" }
 
-Point { "POINT" "(" 2D ")" }
+Point<sys, type> { "POINT" sys "(" type ")" }
 
-Point2<sys, type> { "POINT" sys "(" type ")" }
-
-LineString { "LINESTRING" "(" List<2D> ")" }
+LineString<sys, type> { "LINESTRING" sys "(" List<type> ")" }
 
 Polygon { "POLYGON" "(" "(" List<2D> ")" ")" }
 
