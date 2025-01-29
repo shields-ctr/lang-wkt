@@ -23,6 +23,14 @@ Test case expressions taken from;
 This is an example of how the grammar is tested, pretty nice!
  - https://lezer.codemirror.net/examples/test/
 
+Author's notes;
+ - https://marijnhaverbeke.nl/blog/lezer.html
+   - Lezer was inspired by Atom's parser; https://tree-sitter.github.io/tree-sitter/index.html
+ - https://www.youtube.com/watch?v=1qIee0aHOhY
+ - hey his blog is great...
+
+community projects
+- https://github.com/dennis84/codemirror-themes
 
 ## TODO
 
