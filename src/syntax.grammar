@@ -5,46 +5,45 @@
 @skip { space | Comment }
 
 Geometry {
-  "POINT" (Empty | Point<2D>) |
-  "LINESTRING" (Empty | Line<2D>) |  
-  "POLYGON" (Empty | Polygon<2D>) |
-  "MULTIPOINT" (Empty | "(" List<Point<2D>> ")") |
-  "MULTILINESTRING" (Empty | "(" List<Line<2D>> ")") |
-  "MULTIPOLYGON" (Empty | "(" List<Polygon<2D>> ")") |
-  "GEOMETRYCOLLECTION" (Empty | "(" List<Geometry> ")")
+  point (empty | Point<2D>) |
+  line (empty | Line<2D>) |  
+  polygon (empty | Polygon<2D>) |
+  multipoint (empty | "(" List<Point<2D>> ")") |
+  multiline (empty | "(" List<Line<2D>> ")") |
+  multipolygon (empty | "(" List<Polygon<2D>> ")") |
+  collection (empty | "(" List<Geometry> ")")
 }
 
 GeometryM {
-  "POINT" "M" (Empty | Point<2DM>) |
-  "LINESTRING" "M" (Empty | Line<2DM>) |
-  "POLYGON" "M" (Empty | Polygon<2DM>) |
-  "MULTIPOINT" "M" (Empty | "(" List<Point<2DM>> ")") | 
-  "MULTILINESTRING" "M" (Empty | "(" List<Line<2DM>> ")") |
-  "MULTIPOLYGON" "M" (Empty | "(" List<Polygon<2DM>> ")") |
-  "GEOMETRYCOLLECTION" "M" (Empty | "(" List<GeometryM> ")")
+  point m (empty | Point<2DM>) |
+  line m (empty | Line<2DM>) |
+  polygon m (empty | Polygon<2DM>) |
+  multipoint m (empty | "(" List<Point<2DM>> ")") | 
+  multiline m (empty | "(" List<Line<2DM>> ")") |
+  multipolygon m (empty | "(" List<Polygon<2DM>> ")") |
+  collection m (empty | "(" List<GeometryM> ")")
 }
 
 GeometryZ {
-  "POINT" "Z" (Empty | Point<3D>) |
-  "LINESTRING" "Z" (Empty | Line<3D>) |
-  "POLYGON" "Z" (Empty | Polygon<3D>) |
-  "MULTIPOINT" "Z" (Empty | "(" List<Point<3D>> ")") | 
-  "MULTILINESTRING" "Z" (Empty | "(" List<Line<3D>> ")") |
-  "MULTIPOLYGON" "Z" (Empty | "(" List<Polygon<3D>> ")") | 
-  "GEOMETRYCOLLECTION" "Z" (Empty | "(" List<GeometryZ> ")")
+  point z (empty | Point<3D>) |
+  line z (empty | Line<3D>) |
+  polygon z (empty | Polygon<3D>) |
+  multipoint z (empty | "(" List<Point<3D>> ")") | 
+  multiline z (empty | "(" List<Line<3D>> ")") |
+  multipolygon z (empty | "(" List<Polygon<3D>> ")") | 
+  collection z (empty | "(" List<GeometryZ> ")")
 }
 
 GeometryZM {
-  "POINT" "ZM" (Empty | Point<3DM>) |
-  "LINESTRING" "ZM" (Empty | Line<3DM>) |
-  "POLYGON" "ZM" (Empty | Polygon<3DM>) |
-  "MULTIPOINT" "ZM" (Empty | "(" List<Point<3DM>> ")") |
-  "MULTILINESTRING" "ZM" (Empty | "(" List<Line<3DM>> ")") |
-  "MULTIPOLYGON" "ZM" (Empty | "(" List<Polygon<3DM>> ")") | 
-  "GEOMETRYCOLLECTION" "ZM" (Empty | "(" List<GeometryZM> ")")
+  point zm (empty | Point<3DM>) |
+  line zm (empty | Line<3DM>) |
+  polygon zm (empty | Polygon<3DM>) |
+  multipoint zm (empty | "(" List<Point<3DM>> ")") |
+  multiline zm (empty | "(" List<Line<3DM>> ")") |
+  multipolygon zm (empty | "(" List<Polygon<3DM>> ")") | 
+  collection zm (empty | "(" List<GeometryZM> ")")
 }
 
-Empty { "EMPTY" }
 Point<cs> { "(" cs ")" }
 Line<cs> { "(" List<cs> ")" }
 Polygon<cs> { "(" "(" List<cs> ")" ")" }
@@ -60,12 +59,23 @@ Y { Number }
 Z { Number }
 M { Number }
 
-@tokens {  
+@tokens {
+  empty { $[Ee]$[Mm]$[Pp]$[Tt]$[Yy] }
   Name {$[a-zA-Z]}
   Number { $[0-9]+ }
   Comment { "//" ![\n]* }
   space { $[ \t\n\r]+ }
   "," "(" ")"
+  point { $[Pp]$[Oo]$[Ii]$[Nn]$[Tt] }
+  line { $[Ll]$[Ii]$[Nn]$[Ee]$[Ss]$[Tt]$[Rr]$[Ii]$[Nn]$[Gg] }
+  polygon { $[Pp]$[Oo]$[Ll]$[Yy]$[Gg]$[Oo]$[Nn] }
+  multipoint { $[Mm]$[Uu]$[Ll]$[Tt]$[Ii]$[Pp]$[Oo]$[Ii]$[Nn]$[Tt] }
+  multiline { $[Mm]$[Uu]$[Ll]$[Tt]$[Ii]$[Ll]$[Ii]$[Nn]$[Ee]$[Ss]$[Tt]$[Rr]$[Ii]$[Nn]$[Gg] }
+  multipolygon { $[Mm]$[Uu]$[Ll]$[Tt]$[Ii]$[Pp]$[Oo]$[Ll]$[Yy]$[Gg]$[Oo]$[Nn] }
+  collection { $[Gg]$[Ee]$[Oo]$[Mm]$[Ee]$[Tt]$[Rr]$[Yy]$[Cc]$[Oo]$[Ll]$[Ll]$[Ee]$[Cc]$[Tt]$[Ii]$[Oo]$[Nn] }
+  m { $[Mm] }
+  z { $[Zz] }
+  zm { $[Zz]$[Mm] }
 }
 
 @detectDelim

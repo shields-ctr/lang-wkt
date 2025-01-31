@@ -1,13 +1,21 @@
 # Point
 // test the template grammar rules for Points
 POINT EMPTY
-POINT( 10 10 )
-POINT Z(10 11 12)
-POINT M (100 200 10)
+point( 10 10 )
+PoInT Z(10 11 12)
+pOiNt M (100 200 10)
 POINT ZM ( 100 200 300 10)
+point empty
+PoInT z(10 11 12)
+pOiNt m (100 200 10)
+POINT zM ( 100 200 300 10)
 ==>WKT( Comment,
-  Geometry(Empty),
+  Geometry,
   Geometry(Point(2D(X(Number),Y(Number)))),
+  GeometryZ(Point(3D(X(Number),Y(Number), Z(Number)))),
+  GeometryM(Point(2DM(X(Number),Y(Number), M(Number)))),
+  GeometryZM(Point(3DM(X(Number),Y(Number), Z(Number), M(Number))))
+  Geometry,
   GeometryZ(Point(3D(X(Number),Y(Number), Z(Number)))),
   GeometryM(Point(2DM(X(Number),Y(Number), M(Number)))),
   GeometryZM(Point(3DM(X(Number),Y(Number), Z(Number), M(Number))))
